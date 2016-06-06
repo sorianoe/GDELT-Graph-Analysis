@@ -18,18 +18,13 @@ object AnalyzeGdelt {
 
         //graphx solo soporta
     //GraphX currently only supports integer vertex ids.
-    // If your data is stored with string ids, a possible workaround is to hash them to integers using String.hashCode.
-
     //conversion del tipo de dato string a entero
 
-
-    //“metadata-processed”, que contiene la lista de aristas o arcos.
+    //“processed-gdelt”, que contiene la lista de aristas o arcos.
     // Load the edges as a graph
     //The file should only contain two integers in each line, a source id and a target id.
-    //val graph = GraphLoader.edgeListFile(sc, "metadata-processed-gdelt")
 
     val graph = GraphLoader.edgeListFile(sc,"hdfs://localhost:8020/user/cloudera/processed-gdelt")
-
 
     // Run PageRank
     //PageRank para detectar relaciones
@@ -50,24 +45,6 @@ object AnalyzeGdelt {
     println(ranksByVertex.sortByKey(false).take(10).mkString("\n"))
 
 
-
-    val cuenta=ranksByVertex.count()
-
-     println("Numero de vertices del grafo:",cuenta);
-
-    val num=graph.edges.count();
-    println("Numero de aristas del grafo:",num);
-
-    val triCounts=graph.triangleCount().vertices
-
-
-
-
-   /* val ranksByEntityName = entities.join(ranks).map {
-      row => (row._2._2, row._2._1)
-    }
-
-       println(ranksByEntityName.sortByKey(false).take(5).mkString("\n"))*/
 
   }
 
