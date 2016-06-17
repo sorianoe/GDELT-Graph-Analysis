@@ -40,12 +40,12 @@ object AnalyzeGraphTlf {
 
 
     // join the ids with the phone numbers
-    val ranksByVertex = entities.join(ranks).map {
+    val ranksPorVertice = entities.join(ranks).map {
       case (id, (vertex, rank)) => (rank, vertex)
     }
 
     // print out the top 10 entities
-    println(ranksByVertex.sortByKey(false).take(10).mkString("\n"))
+    println(ranksPorVertice.sortByKey(false).take(10).mkString("\n"))
 
 
 
