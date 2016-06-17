@@ -26,8 +26,9 @@ object AnalyzeGraphTlf {
     // Run PageRank
 
 
-    //what does 0.0001 mean? We are using the version of pagerank which will run until the ranks converge and 0.0001 is our threshold for convergence.
-    // After executing pagerank, we join the results against our dictionary file, sort the results by the rank, and output the first five results.
+    //0.0001 is our threshold for convergence.
+    // After executing pagerank, we join the results against our dictionary file,
+    //sort the results by the rank, and output the first five results.
     val ranks = graph.pageRank(0.0001).vertices
 
 
@@ -44,7 +45,7 @@ object AnalyzeGraphTlf {
       case (id, (vertex, rank)) => (rank, vertex)
     }
 
-    // print out the top 10 entities
+    // print out the top 10 phone pagerank entities of our dataset
     println(ranksPorVertice.sortByKey(false).take(10).mkString("\n"))
 
 
